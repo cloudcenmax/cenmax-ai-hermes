@@ -1,0 +1,7 @@
+name: cenmax-ai
+kind: model-provider
+version: 0.1.0
+description: Sign in with Cenmax AI and use models available to your subscription.
+author: Cenmax AI
+license: MIT
+requires_hermes: ">=0.23.4"
