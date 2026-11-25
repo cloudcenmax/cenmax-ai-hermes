@@ -14,7 +14,15 @@ Public authorization origin: `https://console.ai.cenmax.in`. Model requests use 
 
 Qualified against **Hermes v0.23.4**, Python **3.14.10**, and its locked OpenAI SDK **2.54.0** on 24 November 2026. This Hermes release requires Python 3.14. The plugin uses the model-provider `auth_handler`, `refresh_credential`, `runtime_base_url` and `create_client` hooks documented at [Model Provider Plugins](https://hermes-agent.nousresearch.com/docs/developer-guide/model-provider-plugin). Hermes supplies `openai` and `httpx`; this plugin does not install packages at runtime. See [qualification](./QUALIFICATION.md) for the live checks.
 
-Copy this directory to `~/.hermes/plugins/model-providers/cenmax-ai/` (or the corresponding directory under the selected profile's `HERMES_HOME`). Keep `__init__.py`, `oauth.py`, and `plugin.yaml` together. Restart Hermes after installing.
+Download the [native 0.1.0 release](https://github.com/cloudcenmax/cenmax-ai-hermes/releases/tag/v0.1.0). The archive contains a `cenmax-ai/` plugin directory with the required runtime files, documentation, license and security guidance; it contains no Hermes installation or account credentials. Install into your selected profile:
+
+```sh
+curl --fail --location --output cenmax-ai-hermes-0.1.0.tar.gz https://github.com/cloudcenmax/cenmax-ai-hermes/releases/download/v0.1.0/cenmax-ai-hermes-0.1.0.tar.gz
+mkdir -p "${HERMES_HOME:-$HOME/.hermes}/plugins/model-providers"
+tar -xzf cenmax-ai-hermes-0.1.0.tar.gz -C "${HERMES_HOME:-$HOME/.hermes}/plugins/model-providers"
+```
+
+For a source checkout, copy this directory to `~/.hermes/plugins/model-providers/cenmax-ai/` (or the corresponding directory under the selected profile's `HERMES_HOME`). Keep `__init__.py`, `oauth.py`, and `plugin.yaml` together. Restart Hermes after installing.
 
 ```sh
 hermes auth add cenmax-ai
